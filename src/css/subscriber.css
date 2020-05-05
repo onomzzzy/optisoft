@@ -1,0 +1,34 @@
+.news-letter .card {
+  background-color: #f2f2f2;
+}
+.news-letter {
+  margin-top: 0.6em;
+}
+
+.news-letter h6 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 5px;
+  color: #212121;
+}
+
+.news-letter .row {
+  margin-top: 0.55em;
+}
+
+.newsletterM {
+  margin-top: 1.1em;
+}
+
+.newsletterM h6 {
+  margin-top: 0.5em;
+}
+
+.newsletterM input {
+  width: 100%;
+  margin-top: 0.5em;
+}
+
+.newsletterM button {
+  margin-top: 0.8em;
+}

@@ -1,0 +1,10 @@
+.color-header .card {
+  background-color: #563e7c;
+  height: 40px;
+}
+
+.color-header .card h5 {
+  align-self: center;
+  color: #fff;
+  margin-top: 7px;
+}

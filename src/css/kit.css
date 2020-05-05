@@ -1,0 +1,13 @@
+.kit {
+  margin-top: 0.8em;
+}
+
+.kit .icon {
+  margin-top: 10px;
+}
+.kitq {
+  margin-bottom: 0.8em;
+}
+.kitq .icon img {
+  width: 24px !important;
+}

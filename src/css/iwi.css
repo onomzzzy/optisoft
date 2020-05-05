@@ -1,0 +1,30 @@
+.iwi {
+  margin-top: 1em;
+  position: relative;
+}
+
+.iwi img {
+  max-width: 350px;
+  width: 100%;
+}
+
+.icon-container {
+  position: absolute;
+  top: -22px;
+}
+
+.iwi .icon-container .icon i {
+  font-size: 50px;
+}
+
+.iwi .icon-container .icon {
+  position: relative;
+}
+
+.iwi .icon-container .icon p {
+  color: #fff;
+  position: absolute;
+  top: 15px;
+  left: 21.5px;
+  font-size: 16px;
+}

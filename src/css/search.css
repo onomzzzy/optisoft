@@ -1,0 +1,39 @@
+.search {
+  margin-top: 1em;
+}
+
+.search i {
+  float: right;
+  font-size: 30px !important;
+  cursor: pointer;
+}
+
+.search .animate_component {
+  opacity: 0;
+  animation-name: animateComponent;
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+
+/* The animation code */
+@keyframes animateComponent {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  75% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
