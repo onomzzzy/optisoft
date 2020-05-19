@@ -1,14 +1,16 @@
 import "../css/subscriber.css";
-import React from "react";
+import React, { useContext } from "react";
 import ColorHeader from "./colorheader";
+import { BlogContext } from "../App";
 
 const NewsLetter = () => {
+const blogContext = useContext(BlogContext)
   return (
     <div className="news-letter">
       <div className="card">
         <div className="container">
           <div className="row">
-            <div className="col">
+            <div className="col-12">
               <h6>Subscribe to News letter</h6>
             </div>
             <div className="col">
@@ -20,8 +22,17 @@ const NewsLetter = () => {
             <div className="col">
               <input placeholder="Email ..." />
             </div>
-            <div className="col-2">
-              <button className="btn">Subscribe</button>
+            <div className="col-sm-12 col-md-4">
+              {blogContext.blogState.screen > 768
+              ?
+              <div>
+               <button className="btn btn-sm">Subscribe</button>
+               </div>
+              :
+               <div className='sub'>
+               <button className="btn btn-sm">Subscribe</button>
+               </div>
+              }
             </div>
           </div>
         </div>

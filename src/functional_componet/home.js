@@ -88,9 +88,10 @@ const Home = () => {
         </div>
       </div>
       {/** Top bottom */}
-      <div className="container">
+      <div id="body-controller">
+      <div className="container-md">
         <div className="row">
-          <div className="col-8">
+          <div className="col-12 col-sm-8 col-md-8">
             <div className="row">
               <div className="col-12">
                 <div ref={mainRef} className="home_main" tabIndex="1">
@@ -117,7 +118,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="col-4">
+          <div className="col-12 col-sm-4 col-md-4">
             <Categories />
             <AboutMe />
             <Kit />
@@ -126,6 +127,7 @@ const Home = () => {
             <RecentPost />
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

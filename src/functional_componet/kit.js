@@ -15,16 +15,25 @@ const Kit = () => {
         <div className="container">
           <div className="row">
             <div className="col">
+              <div className="img-controller">
               <img src={facebook} />
+              </div>
+              
             </div>
             <div className="col">
+            <div className="img-controller">
               <img src={twitter} />
+              </div>
             </div>
             <div className="col">
+            <div className="img-controller">
               <img src={instagram} />
             </div>
+            </div>
             <div className="col">
+            <div className="img-controller">
               <img src={youtube} />
+              </div>
             </div>
           </div>
         </div>

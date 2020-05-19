@@ -8,7 +8,6 @@ import { BlogContext } from "../App";
 const Header = () => {
   const blogContext = useContext(BlogContext);
   const [sword, setSword] = useState("");
-  console.log(`from search ${blogContext.blogState.blogPost}`);
 
   return (
     <div className="header-blog">

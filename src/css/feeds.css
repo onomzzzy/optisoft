@@ -3,7 +3,8 @@
 }
 
 .feeds .display img {
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   margin-top: 0.5em;
   margin-bottom: 0.1em;
 }

@@ -1,5 +1,8 @@
 .header-blog .card {
   height: 80px;
+  width:100%;
+  z-index:10;
+  position: fixed;
 }
 /* #563e7c */
 .header-blog .logo-blog {

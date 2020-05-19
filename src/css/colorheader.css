@@ -4,7 +4,13 @@
 }
 
 .color-header .card h5 {
-  align-self: center;
+  text-align: center;
+  color: #fff;
+  margin-top: 7px;
+}
+
+.color-header .card h6 {
+  text-align: center;
   color: #fff;
   margin-top: 7px;
 }

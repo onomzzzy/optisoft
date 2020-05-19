@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useRef } from "react";
+import React, {useContext } from "react";
 import "../css/categories.css";
 import health from "../icons/healthy.png";
 import sport from "../icons/health.png";
@@ -8,10 +8,15 @@ import cultures from "../icons/cultures.png";
 import karma from "../icons/oriental.png";
 import quote from "../icons/sign.png";
 import ColorHeader from "../functional_componet/colorheader";
+import { BlogContext } from "../App";
 
 const Categories = () => {
+const contextBlog = useContext(BlogContext);
   return (
     <div className="categories">
+    {contextBlog.blogState.screen > 640
+    ?
+       <div>
       <ColorHeader title="CATEGORIES" />
       <div className="container">
         <div className="row">
@@ -71,8 +76,22 @@ const Categories = () => {
             </div>
             <hr></hr>
           </div>
+          <div className="col-12">
+            <div className="cat-menu">
+              <span>
+                <img src={quote} /> Music <span>(14)</span>
+              </span>
+            </div>
+            <hr></hr>
+          </div>
         </div>
       </div>
+      </div>
+:
+<div></div>
+  }
+
+
     </div>
   );
 };
