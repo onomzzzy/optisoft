@@ -31,7 +31,7 @@ const contextBlog = useContext(BlogContext);
           <div className="col-12">
             <div className="cat-menu">
               <span>
-                <img src={sport} /> Self Improvement <span>(2)</span>
+                <img src={sport} /> Self Upgrade <span>(2)</span>
               </span>
             </div>
             <hr></hr>
@@ -39,7 +39,7 @@ const contextBlog = useContext(BlogContext);
           <div className="col-12">
             <div className="cat-menu">
               <span>
-                <img src={medication} /> Love & Relationship <span>(3)</span>
+                <img src={medication} /> Relationship <span>(3)</span>
               </span>
             </div>
             <hr></hr>
