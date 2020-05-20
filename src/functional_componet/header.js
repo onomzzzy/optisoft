@@ -1,74 +1,123 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useReducer, useContext } from "react";
+import { Link } from "react-router-dom";
 import "../css/header.css";
-import logo from "../icons/flawless.png";
-import help from "../icons/communications.png";
-import home from "../icons/home.png";
-import { BlogContext } from "../App";
+import logo from "../icons/final-sentry.png";
+import HeaderLink, { HeaderLinkII } from "./headerLink";
+import { HamburgerArrow } from "react-animated-burgers";
+import { NavContext } from "../App";
 
 const Header = () => {
-  const blogContext = useContext(BlogContext);
-  const [sword, setSword] = useState("");
+  const navContext = useContext(NavContext);
 
   return (
-    <div className="header-blog">
+    <div className="header">
       <div className="card">
         <div className="container">
           <div className="row">
-            <div className="col-2">
-              <div className="logo-blog">
+            <div className="col-3">
+              <div className="header-icon">
                 <img src={logo} />
               </div>
             </div>
 
-            <div className="col-7">
-              <div className="push-down">
-                <div className="input-group mb-3">
-                  <div className="input-group-prepend">
-                    <span
-                      onClick={(e) =>
-                        blogContext.blogDispatch({
-                          type: "SET_SEARCH",
-                          searchword: sword,
-                        })
-                      }
-                      className="input-group-text"
-                      id="basic-addon1"
-                    >
-                      <i className="pi pi-search"></i>
-                    </span>
-                  </div>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={sword}
-                    onChange={(e) => setSword(e.target.value)}
-                    placeholder={blogContext.blogState.searchWord}
-                    aria-label="search"
-                    aria-describedby="basic-addon1"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="col-3">
-              <div className="row">
-                <div className="col">
-                  <div className="header-icon push-down">
-                    <span>
-                      <img src={home} /> <span>Home</span>
-                    </span>
-                  </div>
-                </div>
-
-                <div className="col">
-                  <div className="header-icon push-down">
-                    <span>
-                      <img src={help} /> <span>Help</span>
-                    </span>
+            {navContext.navState.screenWidth <= 991 ? (
+              <div className="col-9">
+                <div className="float-right">
+                  <div className="hamburg">
+                    <HamburgerArrow
+                      className="hamburger"
+                      barColor="#0f75bd"
+                      isActive={navContext.navState.sideBar}
+                      toggleButton={(e) => {
+                        navContext.navDispatch({ type: "TOGGLE_SIDE_BAR" });
+                      }}
+                    />
                   </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="col-9">
+                <div className="float-right">
+                  <div className="row">
+                    <div className="col">
+                      <Link
+                        id="home"
+                        onClick={(e) =>
+                          navContext.navDispatch({
+                            type: "SET_LINK_STATE",
+                            view: "home",
+                          })
+                        }
+                        to="/home"
+                      >
+                        <HeaderLink
+                          name="HOME"
+                          inView={navContext.navState.home}
+                        />
+                      </Link>
+                    </div>
+                    <div className="col">
+                    <Link
+                        onClick={(e) =>
+                          navContext.navDispatch({
+                            type: "SET_LINK_STATE",
+                            view: "store",
+                          })
+                        }
+                        to="/home/store"
+                      >
+                      <HeaderLink
+                        name="STORE"
+                        inView={navContext.navState.store}
+                      />
+                      </Link>
+                    </div>
+                    <div className="col">
+                    <Link
+                        onClick={(e) =>
+                          navContext.navDispatch({
+                            type: "SET_LINK_STATE",
+                            view: "about",
+                          })
+                        }
+                        to="/home/about"
+                      >
+                      <HeaderLink
+                        name="ABOUT"
+                        inView={navContext.navState.about}
+                      />
+                      </Link>
+                    </div>
+                    <div className="col">
+                      <Link
+                        onClick={(e) =>
+                          navContext.navDispatch({
+                            type: "SET_LINK_STATE",
+                            view: "login",
+                          })
+                        }
+                        to="/login"
+                      >
+                        <HeaderLinkII
+                          name="LOGIN"
+                          inView={navContext.navState.login}
+                        />
+                      </Link>
+                    </div>
+                    <div className="col">
+                      <button
+                        onClick={(e) =>
+                          navContext.navDispatch({ type: "TOGGLE_MODAL" })
+                        }
+                        className="btn btn-sm"
+                      >
+                        GET IN TOUCH
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

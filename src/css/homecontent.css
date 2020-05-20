@@ -1,0 +1,85 @@
+.home-content {
+  margin-top: 2em;
+}
+.home-content .card {
+  max-width: 1300px;
+  width: 100%;
+  margin-top: 1em;
+  background-color: #f2f2f2;
+}
+
+.home-content .card .feed-img img {
+  max-width: 800px;
+  width: 100%;
+}
+.home-content .v-divider {
+  width: 10px;
+  height: 90px;
+  background-color: #353e4e;
+}
+
+.home-content .feed-mobile .v-divider {
+  width: 5px;
+  height: 60px;
+  margin-right: 0.2em;
+  background-color: #353e4e;
+}
+
+.home-content .mobile {
+  margin-top: 1em;
+  max-height: 420px;
+  background-color: #fff;
+}
+.home-content .mobile img {
+  max-height: 420px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.home-content .feed-right {
+  margin-top: 2.5em;
+  margin-left: 1em;
+}
+
+.home-content .feed-left {
+  margin-top: 2.5em;
+}
+
+.home-content .feed-mobile {
+  margin-top: -3em;
+  margin-left: 0.5em;
+  max-width: 655px;
+  height: 110px;
+  width: 100%;
+  padding: 15px 20px;
+}
+.home-content .feed-mobile .feed-txt {
+  margin-top: 0.5em;
+}
+.home-content .feed-mobile .feed-txt h5 {
+  font-weight: 600;
+}
+
+.home-content .feed-txt .mlarge {
+  margin-left: -1.3em;
+}
+
+.home-content .feed-txt .msmall {
+  margin-left: 0.5em;
+  position: relative;
+  top: -2.5em;
+}
+
+.home-content .feed-txt .mmid {
+  margin-left: -0.8em;
+  position: relative;
+  top: 0.5em;
+}
+
+.home-content .feed-mobile .feed-txt h6 {
+  color: #212121;
+}
+
+.home-content .container .row .mobile {
+  margin-bottom: 60px;
+}

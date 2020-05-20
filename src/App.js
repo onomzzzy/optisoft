@@ -1,55 +1,63 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ErrorPage from "./utility_components/error";
 import Home from "./functional_componet/home";
-export const BlogContext = React.createContext();
+import Header from "./functional_componet/header";
+import Login from "./functional_componet/login";
+import SideNav from "./functional_componet/sidenav";
+import Modal from "./functional_componet/modal";
+
+export const WebAppContext = React.createContext();
+
+export const NavContext = React.createContext();
 
 function App() {
   //initial State
   const initialState = {
-    focus: 0,
-    search: false,
-    searchWord: "Search Blog ...",
-    screen: window.innerWidth
+    screenWidth: window.innerWidth,
+    sideBar: false,
+    modal: false,
+    currentLink: window.location.pathname.toString().replace("/", ""),
+    home: false,
+    login: false,
+    store: false,
+    about: false,
   };
 
   const reducer = (state, action) => {
     switch (action.type) {
-      case "GET_BLOGPOSTs":
+      case "SET_SCREEN_WIDTH":
         state = {
           ...state,
-          blogPost: action.posts,
+          screenWidth: action.width,
         };
         return state;
-        case "SET_SCREEN":
+      case "TOGGLE_SIDE_BAR":
         state = {
           ...state,
-          screen: action.width,
+          sideBar: !state.sideBar,
         };
         return state;
-      case "CHANGE_FOCUS":
+      case "SET_LINK_STATE":
         state = {
           ...state,
-          focus: action.focus,
+          [state.currentLink]: false,
+          [action.view]: true,
+          currentLink: action.view,
         };
         return state;
-
-      case "CANCEL_SEARCH":
+      case "SET_LINK_STATE_INITIAL":
         state = {
           ...state,
-          focus: 0,
-          search: false,
-          searchWord: "Search Blog ...",
+          [action.view]: true,
+          currentLink: action.view,
         };
         return state;
-
-      case "SET_SEARCH":
+      case "TOGGLE_MODAL":
         state = {
           ...state,
-          focus: 1,
-          search: true,
-          searchWord: action.searchword,
+          modal: !state.modal,
         };
         return state;
       default:
@@ -57,47 +65,61 @@ function App() {
     }
   };
 
-
   useEffect(() => {
     document.getElementById("loader").style.display = "none";
   }, []);
 
   useEffect(() => {
-   const handleResize =()=>dispatch({type:"SET_SCREEN",width:window.innerWidth})
-   window.addEventListener('resize',handleResize)
-   return()=>{
-    window.removeEventListener('resize',handleResize)
-   }
-  });
+    dispatch({
+      type: "SET_LINK_STATE_INITIAL",
+      view: window.location.pathname.toString().replace("/", ""),
+    });
+  }, []);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  useEffect(() => {
+    const handleResize = () =>
+      dispatch({ type: "SET_SCREEN_WIDTH", width: window.innerWidth });
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+
+  //Get Post From Server
+  /******* */
+
+  //GetPost from Server Ends...
+
   return (
     <Router>
-      <div>
-        <BlogContext.Provider
-          value={{ blogState: state, blogDispatch: dispatch }}
-        >
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="**" component={ErrorPage} />
-          </Switch>
-        </BlogContext.Provider>
-      </div>
-
-      <div className="footer">
-        <div className="footer_margin">
-          <div className="row">
-            <div className="col">
-              <hr></hr>
-            </div>
-            <div className="col-auto">
-              <p>Copyright © 2020 flawlessheart.com. All rights reserved</p>
-            </div>
-            <div className="col">
-              <hr></hr>
-            </div>
+      <div className="app">
+        <NavContext.Provider value={{ navState: state, navDispatch: dispatch }}>
+          <div className="header">
+            <Header />
           </div>
+
+          <div className="header-sidenav">
+            <SideNav />
+          </div>
+
+          <div className="app-modal">
+            <Modal />
+          </div>
+        </NavContext.Provider>
+
+        <div id="main">
+          <WebAppContext.Provider
+            value={{ webAppState: state, webAppDispatch: dispatch }}
+          >
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/home" component={Home} />
+              <Route path="/login" component={Login} />
+              <Route path="**" component={ErrorPage} />
+            </Switch>
+          </WebAppContext.Provider>
         </div>
       </div>
     </Router>

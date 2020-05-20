@@ -1,7 +1,9 @@
-.content_bar {
-  margin-top: 0.5em;
+.home {
+}
+.home .footer {
+  margin-top: 1em;
 }
 
-#body-controller{
-  padding-top:80px;
+.home .pull-up {
+  margin-top: -4em;
 }
